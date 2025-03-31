@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us | VoxVault</title>
-  <meta name="description" content="Get in touch with VoxVault for premium copywriting and content creation services.">
+  <title>Contact VoxVault</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -17,7 +16,6 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="services.html">Services</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -25,12 +23,16 @@
   </header>
 
   <main class="contact-section">
-    <h1>Get In Touch</h1>
+    <h1>Contact Us</h1>
     
+    <!-- Success Message (Hidden by Default) -->
+    <div class="form-success" id="formSuccess">
+      <i class="fas fa-check-circle"></i> Thank you! We'll contact you within 24 hours.
+    </div>
+
     <div class="contact-container">
       <div class="contact-info">
-        <h2>Contact Information</h2>
-        
+        <h2>Our Office</h2>
         <div class="contact-method">
           <i class="fas fa-envelope"></i>
           <div>
@@ -38,7 +40,6 @@
             <p>voxvault.copywriting@gmail.com</p>
           </div>
         </div>
-        
         <div class="contact-method">
           <i class="fas fa-phone"></i>
           <div>
@@ -46,43 +47,30 @@
             <p>068 234 0749</p>
           </div>
         </div>
-        
-        <div class="contact-method">
-          <i class="fas fa-clock"></i>
-          <div>
-            <h3>Hours</h3>
-            <p>Monday-Friday: 9am-5pm</p>
-            <p>Saturday: By appointment</p>
-          </div>
-        </div>
       </div>
-      
+
       <div class="contact-form">
-        <h2>Send Us a Message</h2>
-        <form action="https://formspree.io/f/voxvault.copywriting@gmail.com" method="POST">
+        <form id="contactForm" action="https://formspree.io/f/voxvault.copywriting@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Contact Form Submission">
+          
           <div class="form-group">
-            <label for="name">Your Name*</label>
+            <label for="name">Full Name</label>
             <input type="text" id="name" name="name" required>
           </div>
           
           <div class="form-group">
-            <label for="email">Email*</label>
+            <label for="email">Email</label>
             <input type="email" id="email" name="email" required>
           </div>
           
           <div class="form-group">
-            <label for="service">Service Interested In</label>
-            <select id="service" name="service">
-              <option value="copywriting">Copywriting</option>
-              <option value="content">Content Creation</option>
-              <option value="webdesign">Web Design</option>
-              <option value="other">Other</option>
-            </select>
+            <label for="message">Your Project Details</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
           </div>
           
-          <div class="form-group">
-            <label for="message">Your Message*</label>
-            <textarea id="message" name="message" required></textarea>
+          <div class="privacy-notice">
+            <input type="checkbox" id="privacyCheck" required>
+            <label for="privacyCheck">I agree to the <a href="privacy.html">Privacy Policy</a></label>
           </div>
           
           <button type="submit" class="cta">Send Message</button>
@@ -92,25 +80,35 @@
   </main>
 
   <section class="newsletter">
-    <h2>Stay Updated</h2>
-    <p>Subscribe to our newsletter for content tips and special offers</p>
-    <form class="newsletter-form" action="https://formspree.io/f/voxvault.copywriting@gmail.com" method="POST">
+    <h2>Get Content Tips</h2>
+    <form id="newsletterForm" action="https://formspree.io/f/voxvault.copywriting@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="New Newsletter Subscriber">
       <input type="email" name="email" class="newsletter-input" placeholder="Your email address" required>
+      <div class="privacy-notice">
+        <input type="checkbox" id="newsletterPrivacy" required>
+        <label for="newsletterPrivacy">I agree to the <a href="privacy.html">Privacy Policy</a></label>
+      </div>
       <button type="submit" class="newsletter-submit">Subscribe</button>
     </form>
   </section>
 
   <footer>
-    <div class="footer-newsletter">
-      <h3>Get Content Tips</h3>
-      <form class="newsletter-form" action="https://formspree.io/f/voxvault.copywriting@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="Footer Newsletter Signup">
-        <input type="email" name="email" class="newsletter-input" placeholder="Email address" required>
-        <button type="submit" class="newsletter-submit">Join</button>
-      </form>
-    </div>
-    <p>&copy; 2025 VoxVault. All rights reserved.</p>
+    <p>&copy; 2025 VoxVault | <a href="privacy.html" style="color:var(--gold)">Privacy Policy</a></p>
   </footer>
+
+  <script>
+    // Form Success Messages
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('formSuccess').style.display = 'block';
+      this.reset();
+    });
+
+    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for subscribing! Check your email for confirmation.');
+      this.reset();
+    });
+  </script>
 </body>
 </html>
