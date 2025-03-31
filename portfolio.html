@@ -1,21 +1,75 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Portfolio | VoxVault</title>
+  <meta name="description" content="View VoxVault's portfolio of successful copywriting and web design projects.">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>Portfolio</h1>
-    </header>
-    <main>
-        <p>Welcome to the Portfolio page. Showcase your work here!</p>
-    </main>
-    <footer>
-        <p>Vox Vault Copywriting &copy; 2025</p>
-    </footer>
+  <header>
+    <div class="header-container">
+      <img src="images/voxvault-logo-main.webp" alt="VoxVault" class="logo">
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="services">
+    <h1>Our Portfolio</h1>
+    
+    <div class="service-grid">
+      <div class="service-card">
+        <img src="images/portfolio-website-before-after.jpg" alt="Website Redesign Project">
+        <h2>E-Commerce Website</h2>
+        <p>Increased conversions by 140% with optimized product copy and streamlined checkout flow.</p>
+      </div>
+      
+      <div class="service-card">
+        <img src="images/portfolio-social-reel.jpg" alt="Social Media Campaign">
+        <h2>Social Media Campaign</h2>
+        <p>Grew audience by 300% in 3 months with strategic content calendar and engagement tactics.</p>
+      </div>
+      
+      <div class="service-card">
+        <img src="images/service-icon-webdesign.jpg" alt="Landing Page Design">
+        <h2>Landing Page</h2>
+        <p>Boosted lead capture by 75% with conversion-focused design and compelling copy.</p>
+      </div>
+    </div>
+  </main>
+
+  <section class="contact-section">
+    <div class="contact-container">
+      <div>
+        <h2>Like What You See?</h2>
+        <p>Let's discuss how we can help with your project.</p>
+      </div>
+      <div>
+        <a href="contact.html" class="cta">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-newsletter">
+      <h3>Get Content Tips</h3>
+      <form class="newsletter-form" action="https://formspree.io/f/voxvault.copywriting@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Footer Newsletter Signup">
+        <input type="email" name="email" class="newsletter-input" placeholder="Email address" required>
+        <button type="submit" class="newsletter-submit">Join</button>
+      </form>
+    </div>
+    <p>&copy; 2025 VoxVault. All rights reserved.</p>
+  </footer>
 </body>
 </html>
