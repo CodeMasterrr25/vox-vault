@@ -44,8 +44,8 @@ header {
 }
 
 .logo {
-  height: 50px;
-  max-width: 100%;
+  max-width: 150px; /* Adjusted for better scaling */
+  height: auto;
   object-fit: contain;
 }
 
@@ -78,7 +78,7 @@ nav a:focus {
 .hero {
   background: linear-gradient(rgba(10,26,58,0.9), rgba(10,26,58,0.9)), 
               url('images/hero-vault-door.jpg') center/cover no-repeat;
-  min-height: 60vh;
+  min-height: 60vh; /* Ensures sufficient space for image */
   color: white;
   padding: 5rem 1rem;
   text-align: center;
@@ -109,7 +109,7 @@ nav a:focus {
   100% { transform: scale(1); }
 }
 
-/* Services Grid */
+/* Services Section */
 .services {
   max-width: 1200px;
   margin: 3rem auto;
@@ -138,18 +138,22 @@ nav a:focus {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.service-card .image-wrapper {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  margin-bottom: 1rem;
+.service-card img {
+  max-width: 100px; /* Limits icon size for consistency */
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto 1rem;
+  display: block;
 }
 
-.service-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 4px;
+.service-card ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.service-card li {
+  margin-bottom: 0.5rem;
 }
 
 /* Why Choose VoxVault */
@@ -172,6 +176,131 @@ nav a:focus {
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Section */
+.contact-section {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-container div {
+  flex: 1;
+}
+
+.contact-container .cta {
+  align-self: center;
+}
+
+.contact-info {
+  text-align: left;
+}
+
+.contact-method {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.contact-method i {
+  color: var(--gold);
+  font-size: 1.5rem;
+}
+
+.form-success {
+  display: none;
+  color: var(--dark);
+  background: var(--light);
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.form-success i {
+  color: var(--gold);
+  margin-right: 0.5rem;
+}
+
+.contact-form {
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.privacy-notice {
+  margin-bottom: 1rem;
+}
+
+.privacy-notice a {
+  color: var(--deep-purple);
+  text-decoration: underline;
+}
+
+.privacy-notice a:hover {
+  color: var(--gold);
+}
+
+/* Privacy and About Pages */
+.container {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+.container h1 {
+  margin-bottom: 1rem;
+}
+
+.container p,
+.container ul {
+  margin-bottom: 1.5rem;
+}
+
+.container ul {
+  list-style: disc;
+  padding-left: 2rem;
+}
+
+/* Newsletter Section */
+.newsletter {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  text-align: center;
 }
 
 /* CTA Button */
@@ -214,6 +343,41 @@ footer a:hover {
   text-decoration: underline;
 }
 
+.footer-newsletter {
+  margin-bottom: 1.5rem;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.newsletter-input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 250px;
+  max-width: 100%;
+}
+
+.newsletter-submit {
+  background: var(--gold);
+  color: var(--dark);
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.newsletter-submit:hover {
+  transform: scale(1.05);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .header-container {
@@ -230,15 +394,37 @@ footer a:hover {
   .hero {
     min-height: 50vh;
     padding: 3rem 1rem;
-    background-size: contain;
+    background-size: contain; /* Prevents excessive cropping on mobile */
   }
 
   h1 { font-size: 2rem; }
   h2 { font-size: 1.5rem; }
   h3 { font-size: 1.25rem; }
 
+  .contact-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-info {
+    text-align: center;
+  }
+
+  .contact-form {
+    text-align: center;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .newsletter-input {
+    width: 100%;
+  }
+
   .service-card img {
-    max-height: 150px;
+    max-width: 80px; /* Smaller icons on mobile */
   }
 }
 
@@ -249,5 +435,9 @@ footer a:hover {
 
   .service-grid, .why-choose-grid {
     grid-template-columns: 1fr;
+  }
+
+  .logo {
+    max-width: 120px;
   }
 }
