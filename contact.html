@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="icon" type="image/webp" href="images/voxvault-favicon.webp">
 </head>
 <body>
   <header>
@@ -21,6 +22,7 @@
           <li><a href="services.html">Services</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
         </ul>
       </nav>
     </div>
@@ -29,9 +31,12 @@
   <main class="contact-section">
     <h1>Contact VoxVault for SEO and Copywriting Services</h1>
     
-    <!-- Success Message (Hidden by Default) -->
-    <div class="form-success" id="formSuccess">
+    <div class="form-success" id="formSuccess" style="display: none;">
       <i class="fas fa-check-circle"></i> Thank you! We'll contact you within 24 hours.
+    </div>
+
+    <div class="form-error" id="formError" style="display: none; color: #d32f2f; background: #ffebee; padding: 1rem; border-radius: 4px; margin-bottom: 1rem; text-align: center;">
+      <i class="fas fa-exclamation-circle"></i> Something went wrong. Please try again or email us at voxvault.copywriting@gmail.com.
     </div>
 
     <div class="contact-container">
@@ -41,21 +46,22 @@
           <i class="fas fa-envelope"></i>
           <div>
             <h3>Email</h3>
-            <p>voxvault.copywriting@gmail.com</p>
+            <p><a href="mailto:voxvault.copywriting@gmail.com">voxvault.copywriting@gmail.com</a></p>
           </div>
         </div>
         <div class="contact-method">
           <i class="fas fa-phone"></i>
           <div>
             <h3>Phone</h3>
-            <p>068 234 0749</p>
+            <p><a href="tel:+27682340749">068 234 0749</a></p>
           </div>
         </div>
       </div>
 
       <div class="contact-form">
-        <form id="contactForm" action="https://formspree.io/f/voxvault.copywriting@gmail.com" method="POST">
+        <form id="contactForm" action="https://formspree.io/f/xkgvjove" method="POST">
           <input type="hidden" name="_subject" value="New Contact Form Submission">
+          <input type="hidden" name="_next" value="https://vox-vault.co.uk/contact.html#formSuccess">
           
           <div class="form-group">
             <label for="name">Full Name</label>
@@ -85,8 +91,9 @@
 
   <section class="newsletter">
     <h2>Get SEO and Content Tips</h2>
-    <form id="newsletterForm" action="https://formspree.io/f/voxvault.copywriting@gmail.com" method="POST">
+    <form id="newsletterForm" action="https://formspree.io/f/xkgvjove" method="POST">
       <input type="hidden" name="_subject" value="New Newsletter Subscriber">
+      <input type="hidden" name="_next" value="https://vox-vault.co.uk/contact.html#formSuccess">
       <input type="email" name="email" class="newsletter-input" placeholder="Your email address" required>
       <div class="privacy-notice">
         <input type="checkbox" id="newsletterPrivacy" required>
@@ -97,21 +104,79 @@
   </section>
 
   <footer>
+    <div class="footer-newsletter">
+      <h3>Get SEO and Content Tips</h3>
+      <form class="newsletter-form" action="https://formspree.io/f/xkgvjove" method="POST">
+        <input type="hidden" name="_subject" value="Footer Newsletter Signup">
+        <input type="hidden" name="_next" value="https://vox-vault.co.uk/contact.html#formSuccess">
+        <input type="email" name="email" class="newsletter-input" placeholder="Email address" required>
+        <div class="privacy-notice">
+          <input type="checkbox" id="footerNewsletterPrivacy" required>
+          <label for="footerNewsletterPrivacy">I agree to the <a href="privacy.html">Privacy Policy</a></label>
+        </div>
+        <button type="submit" class="newsletter-submit">Join</button>
+      </form>
+    </div>
     <p>&copy; 2025 VoxVault. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
   </footer>
 
   <script>
-    // Form Success Messages
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    // Contact Form Submission
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      document.getElementById('formSuccess').style.display = 'block';
-      this.reset();
+      const form = this;
+      const success = document.getElementById('formSuccess');
+      const error = document.getElementById('formError');
+      
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        
+        if (response.ok) {
+          success.style.display = 'block';
+          error.style.display = 'none';
+          form.reset();
+          window.scrollTo({ top: success.offsetTop, behavior: 'smooth' });
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (err) {
+        success.style.display = 'none';
+        error.style.display = 'block';
+        window.scrollTo({ top: error.offsetTop, behavior: 'smooth' });
+      }
     });
 
-    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+    // Newsletter Form Submission
+    document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      alert('Thank you for subscribing! Check your email for confirmation.');
-      this.reset();
+      const form = this;
+      const success = document.getElementById('formSuccess');
+      const error = document.getElementById('formError');
+      
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        
+        if (response.ok) {
+          success.style.display = 'block';
+          error.style.display = 'none';
+          form.reset();
+          window.scrollTo({ top: success.offsetTop, behavior: 'smooth' });
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (err) {
+        success.style.display = 'none';
+        error.style.display = 'block';
+        window.scrollTo({ top: error.offsetTop, behavior: 'smooth' });
+      }
     });
   </script>
 </body>
