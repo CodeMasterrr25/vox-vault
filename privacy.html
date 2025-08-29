@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="icon" type="image/webp" href="images/voxvault-favicon.webp">
 </head>
 <body>
   <header>
@@ -21,6 +22,7 @@
           <li><a href="services.html">Services</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
         </ul>
       </nav>
     </div>
@@ -28,10 +30,10 @@
 
   <main class="container">
     <h1>Privacy Policy</h1>
-    <p><strong>Last Updated:</strong> June 2024</p>
+    <p><strong>Last Updated:</strong> August 2025</p>
     
     <h2>1. Information We Collect</h2>
-    <p>We collect only the information you provide through our contact forms, including:</p>
+    <p>We collect only the information you provide through our contact and newsletter forms, including:</p>
     <ul>
       <li>Name</li>
       <li>Email address</li>
@@ -43,18 +45,73 @@
     <ul>
       <li>Respond to inquiries about SEO and copywriting services</li>
       <li>Deliver requested services</li>
-      <li>Send marketing communications (if opted-in)</li>
+      <li>Send marketing communications (if opted-in via newsletter)</li>
     </ul>
 
     <h2>3. Data Protection</h2>
-    <p>We implement security measures including SSL encryption and secure form handlers to protect your data.</p>
+    <p>We implement industry-standard security measures including SSL encryption and secure form handlers to protect your data.</p>
 
     <h2>4. Your Rights</h2>
-    <p>You may request access to or deletion of your data by emailing voxvault.copywriting@gmail.com</p>
+    <p>You may request access to or deletion of your data by emailing <a href="mailto:voxvault.copywriting@gmail.com">voxvault.copywriting@gmail.com</a>.</p>
+
+    <h2>5. Third-Party Services</h2>
+    <p>We use Formspree to process form submissions. Please review their <a href="https://formspree.io/legal/privacy-policy" target="_blank">privacy policy</a> for details.</p>
   </main>
 
   <footer>
+    <div class="footer-newsletter">
+      <h3>Get SEO and Content Tips</h3>
+      <form class="newsletter-form" action="https://formspree.io/f/xkgvjove" method="POST">
+        <input type="hidden" name="_subject" value="Footer Newsletter Signup">
+        <input type="hidden" name="_next" value="https://vox-vault.co.uk/privacy.html#formSuccess">
+        <input type="email" name="email" class="newsletter-input" placeholder="Email address" required>
+        <div class="privacy-notice">
+          <input type="checkbox" id="footerNewsletterPrivacy" required>
+          <label for="footerNewsletterPrivacy">I agree to the <a href="privacy.html">Privacy Policy</a></label>
+        </div>
+        <button type="submit" class="newsletter-submit">Join</button>
+      </form>
+    </div>
     <p>&copy; 2025 VoxVault. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
   </footer>
+
+  <div class="form-success" id="formSuccess" style="display: none; color: var(--dark); background: var(--light); padding: 1rem; border-radius: 4px; margin: 1rem auto; text-align: center; max-width: 1200px;">
+    <i class="fas fa-check-circle"></i> Thank you for subscribing! Check your email for confirmation.
+  </div>
+  <div class="form-error" id="formError" style="display: none; color: #d32f2f; background: #ffebee; padding: 1rem; border-radius: 4px; margin: 1rem auto; text-align: center; max-width: 1200px;">
+    <i class="fas fa-exclamation-circle"></i> Something went wrong. Please try again or email us at voxvault.copywriting@gmail.com.
+  </div>
+
+  <script>
+    // Newsletter Form Submission
+    document.querySelectorAll('.newsletter-form').forEach(form => {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const success = document.getElementById('formSuccess');
+        const error = document.getElementById('formError');
+        
+        try {
+          const response = await fetch(form.action, {
+            method: form.method,
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+          
+          if (response.ok) {
+            success.style.display = 'block';
+            error.style.display = 'none';
+            form.reset();
+            window.scrollTo({ top: success.offsetTop, behavior: 'smooth' });
+          } else {
+            throw new Error('Submission failed');
+          }
+        } catch (err) {
+          success.style.display = 'none';
+          error.style.display = 'block';
+          window.scrollTo({ top: error.offsetTop, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
