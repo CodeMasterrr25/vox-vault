@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="icon" type="image/webp" href="images/voxvault-favicon.webp">
 </head>
 <body>
   <header>
@@ -21,6 +22,7 @@
           <li><a href="services.html">Services</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
         </ul>
       </nav>
     </div>
@@ -28,13 +30,65 @@
 
   <main class="container">
     <h1>About VoxVault</h1>
-    <p>Founded in South Africa, VoxVault is your go-to partner for premium SEO, copywriting, and content creation services. We specialize in helping businesses in the UK and beyond achieve higher search rankings, engaging content, and increased conversions through tailored digital strategies.</p>
+    <p>Founded in South Africa, VoxVault is your go-to partner for premium SEO, copywriting, and digital marketing services. We specialize in helping businesses in the UK and beyond achieve higher search rankings, engaging content, and increased conversions through tailored digital strategies.</p>
     <p>Our mission is to unlock your business potential with results-driven approaches, combining global expertise with a local South African touch. Whether you're a small business or a growing enterprise, our team delivers high-quality services to drive your online success.</p>
     <a href="contact.html" class="cta">Contact Us to Learn More</a>
   </main>
 
   <footer>
+    <div class="footer-newsletter">
+      <h3>Get SEO and Content Tips</h3>
+      <form class="newsletter-form" action="https://formspree.io/f/xkgvjove" method="POST">
+        <input type="hidden" name="_subject" value="Footer Newsletter Signup">
+        <input type="hidden" name="_next" value="https://vox-vault.co.uk/about.html#formSuccess">
+        <input type="email" name="email" class="newsletter-input" placeholder="Email address" required>
+        <div class="privacy-notice">
+          <input type="checkbox" id="footerNewsletterPrivacy" required>
+          <label for="footerNewsletterPrivacy">I agree to the <a href="privacy.html">Privacy Policy</a></label>
+        </div>
+        <button type="submit" class="newsletter-submit">Join</button>
+      </form>
+    </div>
     <p>&copy; 2025 VoxVault. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
   </footer>
+
+  <div class="form-success" id="formSuccess" style="display: none; color: var(--dark); background: var(--light); padding: 1rem; border-radius: 4px; margin: 1rem auto; text-align: center; max-width: 1200px;">
+    <i class="fas fa-check-circle"></i> Thank you for subscribing! Check your email for confirmation.
+  </div>
+  <div class="form-error" id="formError" style="display: none; color: #d32f2f; background: #ffebee; padding: 1rem; border-radius: 4px; margin: 1rem auto; text-align: center; max-width: 1200px;">
+    <i class="fas fa-exclamation-circle"></i> Something went wrong. Please try again or email us at voxvault.copywriting@gmail.com.
+  </div>
+
+  <script>
+    // Newsletter Form Submission
+    document.querySelectorAll('.newsletter-form').forEach(form => {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const success = document.getElementById('formSuccess');
+        const error = document.getElementById('formError');
+        
+        try {
+          const response = await fetch(form.action, {
+            method: form.method,
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+          
+          if (response.ok) {
+            success.style.display = 'block';
+            error.style.display = 'none';
+            form.reset();
+            window.scrollTo({ top: success.offsetTop, behavior: 'smooth' });
+          } else {
+            throw new Error('Submission failed');
+          }
+        } catch (err) {
+          success.style.display = 'none';
+          error.style.display = 'block';
+          window.scrollTo({ top: error.offsetTop, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
