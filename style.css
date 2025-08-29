@@ -44,7 +44,7 @@ header {
 }
 
 .logo {
-  max-width: 150px; /* Adjusted for better scaling */
+  max-width: 150px;
   height: auto;
   object-fit: contain;
 }
@@ -78,7 +78,7 @@ nav a:focus {
 .hero {
   background: linear-gradient(rgba(10,26,58,0.9), rgba(10,26,58,0.9)), 
               url('images/hero-vault-door.jpg') center/cover no-repeat;
-  min-height: 60vh; /* Ensures sufficient space for image */
+  min-height: 60vh;
   color: white;
   padding: 5rem 1rem;
   text-align: center;
@@ -139,7 +139,7 @@ nav a:focus {
 }
 
 .service-card img {
-  max-width: 100px; /* Limits icon size for consistency */
+  max-width: 100px;
   height: auto;
   object-fit: contain;
   margin: 0 auto 1rem;
@@ -231,6 +231,20 @@ nav a:focus {
 
 .form-success i {
   color: var(--gold);
+  margin-right: 0.5rem;
+}
+
+.form-error {
+  display: none;
+  color: #d32f2f;
+  background: #ffebee;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.form-error i {
   margin-right: 0.5rem;
 }
 
@@ -394,7 +408,7 @@ footer a:hover {
   .hero {
     min-height: 50vh;
     padding: 3rem 1rem;
-    background-size: contain; /* Prevents excessive cropping on mobile */
+    background-size: contain;
   }
 
   h1 { font-size: 2rem; }
@@ -424,7 +438,7 @@ footer a:hover {
   }
 
   .service-card img {
-    max-width: 80px; /* Smaller icons on mobile */
+    max-width: 80px;
   }
 }
 
