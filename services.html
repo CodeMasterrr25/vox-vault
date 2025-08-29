@@ -1,90 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Services | VoxVault</title>
-  <meta name="description" content="VoxVault's premium copywriting, content creation, and web design services.">
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
-  <header>
-    <div class="header-container">
-      <img src="images/voxvault-logo-main.webp" alt="VoxVault" class="logo">
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+/* ===== CORE STYLES ===== */
+:root {
+  --deep-purple: #4B0082;
+  --chrome: #C0C0C0;
+  --gold: #FFD700;
+  --dark: #0A1A3A;
+  --light: #F5F5F5;
+}
 
-  <main class="services">
-    <h1>Our Services</h1>
-    
-    <div class="service-grid">
-      <div class="service-card">
-        <img src="images/service-icon-copywriting.jpg" alt="Copywriting Icon">
-        <h2>SEO Copywriting</h2>
-        <ul>
-          <li>Website copy optimization</li>
-          <li>Blog content strategy</li>
-          <li>Product descriptions</li>
-          <li>Landing page copy</li>
-        </ul>
-      </div>
-      
-      <div class="service-card">
-        <img src="images/service-icon-content.jpg" alt="Content Creation Icon">
-        <h2>Content Creation</h2>
-        <ul>
-          <li>Social media content</li>
-          <li>Email sequences</li>
-          <li>Video scripts</li>
-          <li>Whitepapers</li>
-        </ul>
-      </div>
-      
-      <div class="service-card">
-        <img src="images/service-icon-webdesign.jpg" alt="Web Design Icon">
-        <h2>Web Design</h2>
-        <ul>
-          <li>Responsive websites</li>
-          <li>Landing pages</li>
-          <li>UI/UX optimization</li>
-          <li>Performance tuning</li>
-        </ul>
-      </div>
-    </div>
-  </main>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  <section class="contact-section">
-    <div class="contact-container">
-      <div>
-        <h2>Ready to Get Started?</h2>
-        <p>Contact us today to discuss your project needs.</p>
-      </div>
-      <div>
-        <a href="contact.html" class="cta">Contact Us</a>
-      </div>
-    </div>
-  </section>
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+  line-height: 1.6;
+  font-size: 1rem;
+}
 
-  <footer>
-    <div class="footer-newsletter">
-      <h3>Get Content Tips</h3>
-      <form class="newsletter-form" action="https://formspree.io/f/voxvault.copywriting@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="Footer Newsletter Signup">
-        <input type="email" name="email" class="newsletter-input" placeholder="Email address" required>
-        <button type="submit" class="newsletter-submit">Join</button>
-      </form>
-    </div>
-    <p>&copy; 2025 VoxVault. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+h1, h2, h3 {
+  font-weight: 700;
+  color: var(--dark);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+/* Header */
+header {
+  background: var(--dark);
+  padding: 1rem;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  max-width: 150px; /* Adjusted for better scaling */
+  height: auto;
+  object-fit: contain;
+}
+
+/* Navigation */
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+nav a {
+  color: var(--chrome);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+nav a:hover, nav a:focus {
+  color: var(--gold);
+  outline: none;
+}
+
+nav a:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(rgba(10,26,58,0.9), rgba(10,26,58,0.9)), 
+              url('images
